@@ -1,0 +1,66 @@
+digraph FluxogramaCadastro {
+  rankdir=TB;
+  bgcolor="white";
+  splines=polyline;
+  nodesep=0.28;
+  ranksep=0.16;
+  ordering=out;
+  node [fontname="Arial", fontsize=14, style=filled, fillcolor="#FFFFFF",
+        color="#1F3864", penwidth=1.8, margin="0.14,0.07"];
+  edge [fontname="Arial", fontsize=13, color="#1F3864", penwidth=1.6];
+
+  // ---------- coluna principal (caminho normal do cadastro) ----------
+  ini   [label="INÍCIO\ncadastrarAcao()", shape=ellipse, fillcolor="#D9E2F3", group=spine];
+  cheio [label="vetor cheio ?", shape=diamond, fillcolor="#FFF2CC", height=0.68, width=1.95, group=spine];
+  lecod [label="Ler código da ação", shape=parallelogram, fillcolor="#FBE5D6", group=spine];
+  codok [label="código > 0 ?", shape=diamond, fillcolor="#FFF2CC", height=0.68, width=1.95, group=spine];
+  dup   [label="código já\nexiste ?", shape=diamond, fillcolor="#FFF2CC", height=0.78, width=1.95, group=spine];
+  letxt [label="Ler escola, tema, data,\npúblico-alvo e responsável", shape=parallelogram, fillcolor="#FBE5D6", group=spine];
+  txtok [label="algum campo\nvazio ?", shape=diamond, fillcolor="#FFF2CC", height=0.78, width=1.95, group=spine];
+  leqtd [label="Ler quantidade prevista", shape=parallelogram, fillcolor="#FBE5D6", group=spine];
+  qtdok [label="quantidade > 0 ?", shape=diamond, fillcolor="#FFF2CC", height=0.68, width=1.95, group=spine];
+  grava [label="Gravar dados no vetor\nsituação ← PLANEJADA · efetivos ← 0\ntotalAcoes ← totalAcoes + 1", shape=box, fillcolor="#E2EFDA", group=spine];
+  ok    [label="Exibir \"Ação cadastrada\ncom sucesso\"", shape=parallelogram, fillcolor="#FBE5D6", group=spine];
+  fim   [label="FIM\nretorna ao menu", shape=ellipse, fillcolor="#D9E2F3", group=spine];
+
+  // ---------- coluna da direita: mensagens de erro ----------
+  mcheio [label="Exibir \"Limite de\nregistros atingido\"", shape=parallelogram, fillcolor="#FBE5D6"];
+  mcod   [label="Exibir\n\"Código inválido\"", shape=parallelogram, fillcolor="#FBE5D6"];
+  mdup   [label="Exibir \"Código já\ncadastrado\"", shape=parallelogram, fillcolor="#FBE5D6"];
+  mtxt   [label="Exibir \"Campo\nobrigatório vazio\"", shape=parallelogram, fillcolor="#FBE5D6"];
+  mqtd   [label="Exibir \"Quantidade\ndeve ser > 0\"", shape=parallelogram, fillcolor="#FBE5D6"];
+
+  ini -> cheio;
+  cheio -> lecod [label="Não"];
+  cheio -> mcheio [label="Sim"];
+
+  lecod -> codok;
+  codok -> dup [label="Sim"];
+  codok -> mcod [label="Não"];
+
+  dup -> letxt [label="Não"];
+  dup -> mdup [label="Sim"];
+
+  letxt -> txtok;
+  txtok -> leqtd [label="Não"];
+  txtok -> mtxt [label="Sim"];
+
+  leqtd -> qtdok;
+  qtdok -> grava [label="Sim"];
+  qtdok -> mqtd [label="Não"];
+
+  grava -> ok -> fim;
+
+  // retornos das mensagens de erro
+  mcheio -> fim   [constraint=false];
+  mcod  -> lecod  [constraint=false];
+  mdup  -> lecod  [constraint=false];
+  mtxt  -> letxt  [constraint=false];
+  mqtd  -> leqtd  [constraint=false];
+
+  { rank=same; cheio; mcheio; }
+  { rank=same; codok; mcod;  }
+  { rank=same; dup;   mdup;  }
+  { rank=same; txtok; mtxt;  }
+  { rank=same; qtdok; mqtd;  }
+}

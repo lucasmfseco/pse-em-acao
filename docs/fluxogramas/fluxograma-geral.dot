@@ -1,0 +1,71 @@
+digraph FluxogramaGeral {
+  rankdir=TB;
+  bgcolor="white";
+  splines=polyline;
+  nodesep=0.28;
+  ranksep=0.20;
+  ordering=out;
+  node [fontname="Arial", fontsize=14, style=filled, fillcolor="#FFFFFF",
+        color="#1F3864", penwidth=1.8, margin="0.14,0.07"];
+  edge [fontname="Arial", fontsize=13, color="#1F3864", penwidth=1.6];
+
+  // ---- coluna principal (group mantém tudo alinhado na vertical) ----
+  inicio [label="INÍCIO", shape=ellipse, fillcolor="#D9E2F3", group=spine];
+  init   [label="totalAcoes ← 0", shape=box, group=spine];
+  menu   [label="Exibir menu principal", shape=parallelogram, fillcolor="#FBE5D6", group=spine];
+  leop   [label="Ler opção", shape=parallelogram, fillcolor="#FBE5D6", group=spine];
+
+  d1 [label="opção = 1 ?", shape=diamond, fillcolor="#FFF2CC", height=0.68, width=1.95, group=spine];
+  d2 [label="opção = 2 ?", shape=diamond, fillcolor="#FFF2CC", height=0.68, width=1.95, group=spine];
+  d3 [label="opção = 3 ?", shape=diamond, fillcolor="#FFF2CC", height=0.68, width=1.95, group=spine];
+  d4 [label="opção = 4 ?", shape=diamond, fillcolor="#FFF2CC", height=0.68, width=1.95, group=spine];
+  d5 [label="opção = 5 ?", shape=diamond, fillcolor="#FFF2CC", height=0.68, width=1.95, group=spine];
+  d0 [label="opção = 0 ?", shape=diamond, fillcolor="#FFF2CC", height=0.68, width=1.95, group=spine];
+
+  msg [label="Exibir\n\"Encerrando...\"", shape=parallelogram, fillcolor="#FBE5D6", group=spine];
+  fim [label="FIM", shape=ellipse, fillcolor="#D9E2F3", group=spine];
+
+  // ---- coluna da direita: as funções chamadas ----
+  f1 [label="cadastrarAcao()",    shape=box, fillcolor="#E2EFDA"];
+  f2 [label="listarAcoes()",      shape=box, fillcolor="#E2EFDA"];
+  f3 [label="pesquisarAcoes()",   shape=box, fillcolor="#E2EFDA"];
+  f4 [label="atualizarSituacao()",shape=box, fillcolor="#E2EFDA"];
+  f5 [label="gerarResumo()",      shape=box, fillcolor="#E2EFDA"];
+  erro [label="Exibir\n\"Opção inválida\"", shape=parallelogram, fillcolor="#FBE5D6"];
+
+  j [label="", shape=point, width=0.11, color="#1F3864", fillcolor="#1F3864"];
+
+  inicio -> init -> menu -> leop -> d1;
+
+  d1 -> d2 [label="Não"];
+  d2 -> d3 [label="Não"];
+  d3 -> d4 [label="Não"];
+  d4 -> d5 [label="Não"];
+  d5 -> d0 [label="Não"];
+  d0 -> msg [label="Sim"];
+  msg -> fim;
+
+  d1 -> f1 [label="Sim"];
+  d2 -> f2 [label="Sim"];
+  d3 -> f3 [label="Sim"];
+  d4 -> f4 [label="Sim"];
+  d5 -> f5 [label="Sim"];
+  d0 -> erro [label="Não"];
+
+
+  { rank=same; d1; f1; }
+  { rank=same; d2; f2; }
+  { rank=same; d3; f3; }
+  { rank=same; d4; f4; }
+  { rank=same; d5; f5; }
+  { rank=same; d0; erro; }
+
+  // retorno ao menu, desenhado pela direita
+  f1 -> j [constraint=false];
+  f2 -> j [constraint=false];
+  f3 -> j [constraint=false];
+  f4 -> j [constraint=false];
+  f5 -> j [constraint=false];
+  erro -> j [constraint=false];
+  j -> menu [label="repete o menu", constraint=false];
+}
