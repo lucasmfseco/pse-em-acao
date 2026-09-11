@@ -4,7 +4,7 @@ Aplicação em **linguagem C**, executável em terminal, para apoiar o planejame
 acompanhamento de ações coletivas do **Programa Saúde na Escola (PSE)**.
 
 Projeto desenvolvido como **Atividade de Estudo Prática (AEP)** do 2º semestre de 2026 —
-UNICESUMAR Maringá, curso de Engenharia de Software.
+UNICESUMAR Maringá.
 
 ---
 
