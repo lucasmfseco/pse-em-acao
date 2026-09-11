@@ -1,10 +1,10 @@
 # PSE em Ação — Sistema de Planejamento e Acompanhamento de Ações de Saúde na Escola
 
-Aplicação em **linguagem C**, executada em terminal, para apoiar o planejamento, o registro e o
+Aplicação em **linguagem C**, executável em terminal, para apoiar o planejamento, o registro e o
 acompanhamento de ações coletivas do **Programa Saúde na Escola (PSE)**.
 
 Projeto desenvolvido como **Atividade de Estudo Prática (AEP)** do 2º semestre de 2026 —
-Universidade Cesumar (UNICESUMAR), curso de Engenharia de Software.
+UNICESUMAR Maringá, curso de Engenharia de Software.
 
 ---
 
@@ -12,12 +12,11 @@ Universidade Cesumar (UNICESUMAR), curso de Engenharia de Software.
 
 | Nome completo | RA | GitHub |
 |---|---|---|
-| Lucas Machado Feltrim Seco | 26012183-2 | *[preencher]* |
-| Victor Henrique da Silva Stander | 26006004-2 | *[preencher]* |
-| Fábio Henrique Soares Ferreira | 26006522-2 | *[preencher]* |
+| Lucas Machado Feltrim Seco | 26012183-2 | [@lucasmfseco](https://github.com/lucasmfseco) |
+| Victor Henrique da Silva Stander | 26006004-2 | — |
+| Fábio Henrique Soares Ferreira | 26006522-2 | — |
 
 **Curso:** Engenharia de Software — 2º semestre · **Turma:** ESOFT2S-N-C
-**Professor(a) orientador(a):** *[preencher]*
 
 ---
 
@@ -77,14 +76,15 @@ Estes limites são **requisitos de projeto**, não recomendações:
 ```
 pse-em-acao/
 ├── README.md
-├── .gitignore
 ├── docs/
-│   ├── entrega-1/            # documento escrito da 1ª entrega (.docx e .pdf)
-│   ├── fluxogramas/          # fluxograma geral e fluxograma detalhado do cadastro
-│   └── entrega-2/            # (2ª entrega) casos de uso, manual e capturas de tela
-├── src/main.c                # esqueleto em C: menu, cadastro, auxiliares e resumo
-└── testes/                   # (2ª entrega) registro dos testes realizados
+│   ├── README.md             # o que há em cada subpasta
+│   ├── entrega-1/            # documento escrito da 1ª entrega (.pdf)
+│   └── fluxogramas/          # imagens (.png) e os fontes Graphviz (.dot)
+└── src/main.c                # esqueleto em C: menu, cadastro, auxiliares e resumo
 ```
+
+As pastas da 2ª entrega (`docs/entrega-2/` e `testes/`) serão criadas quando houver
+conteúdo para elas.
 
 ---
 
@@ -92,7 +92,6 @@ pse-em-acao/
 
 | Artefato | Caminho |
 |---|---|
-| Documento escrito completo (Word) | [`docs/entrega-1/AEP_1a_Entrega_PSE_em_Acao.docx`](docs/entrega-1/AEP_1a_Entrega_PSE_em_Acao.docx) |
 | Documento escrito completo (PDF) | [`docs/entrega-1/AEP_1a_Entrega_PSE_em_Acao.pdf`](docs/entrega-1/AEP_1a_Entrega_PSE_em_Acao.pdf) |
 | Fluxograma geral do sistema | [`docs/fluxogramas/fluxograma-geral.png`](docs/fluxogramas/fluxograma-geral.png) |
 | Fluxograma do cadastro de ação | [`docs/fluxogramas/fluxograma-cadastro-acao.png`](docs/fluxogramas/fluxograma-cadastro-acao.png) |
@@ -118,7 +117,7 @@ compila e executa, encerrando com um commit de fechamento e a atualização da p
 | 5 | Atualização de situação e resumo | v0.3 — escopo mínimo completo |
 | 6 | Testes e refinamento | v1.0 estável e registro de testes |
 | 7 | Documentação e artefatos de ES | Casos de uso e manual do usuário |
-| 8 | Apresentação final | Vídeo de até 7 minutos |
+| 8 | Apresentação final | Vídeo e repositório final |
 
 ---
 
