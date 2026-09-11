@@ -15,6 +15,7 @@ UNICESUMAR Maringá.
 | Lucas Machado Feltrim Seco | 26012183-2 | [@lucasmfseco](https://github.com/lucasmfseco) |
 | Victor Henrique da Silva Stander | 26006004-2 | [@Victorstander](https://github.com/Victorstander) |
 | Fábio Henrique Soares Ferreira | 26006522-2 | [@fhsoares08](https://github.com/fhsoares08) |
+
 **Curso:** Engenharia de Software — 2º semestre · **Turma:** ESOFT2S-N-C
 
 ---
