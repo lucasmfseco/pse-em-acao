@@ -4,6 +4,8 @@ Sistema em C, rodando no terminal, para planejar e acompanhar ações do **Progr
 
 AEP do 2º semestre de 2026 — Engenharia de Software, UNICESUMAR Maringá (turma ESOFT2S-N-C).
 
+**Vídeo de apresentação:** https://youtu.be/glHC6U0cs7Q
+
 ## Grupo
 
 - Lucas Machado Feltrim Seco — RA 26012183-2 — [@lucasmfseco](https://github.com/lucasmfseco)
