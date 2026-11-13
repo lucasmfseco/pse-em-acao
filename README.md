@@ -89,8 +89,18 @@ pse-em-acao/
 └── docs/
     ├── README.md             # o que há em cada subpasta
     ├── entrega-1/            # documento escrito da 1ª entrega (.pdf)
+    ├── entrega-2/            # documento final da 2ª entrega (.pdf e .docx)
     └── fluxogramas/          # imagens (.png) e os fontes Graphviz (.dot)
 ```
+
+---
+
+## Documentação da 2ª entrega
+
+| Artefato | Caminho |
+|---|---|
+| Documento final: requisitos atualizados, casos de uso, testes, manual e considerações finais (PDF) | [`docs/entrega-2/AEP_2a_Entrega_PSE_em_Acao.pdf`](docs/entrega-2/AEP_2a_Entrega_PSE_em_Acao.pdf) |
+| Registro dos testes | [`testes/registro-de-testes.md`](testes/registro-de-testes.md) |
 
 ---
 
