@@ -6,6 +6,8 @@ acompanhamento de ações coletivas do **Programa Saúde na Escola (PSE)**.
 Projeto desenvolvido como **Atividade de Estudo Prática (AEP)** do 2º semestre de 2026 —
 UNICESUMAR Maringá, curso de Engenharia de Software.
 
+**Vídeo de apresentação:** [INSERIR O LINK DO VÍDEO]
+
 ---
 
 ## Integrantes do grupo
@@ -42,19 +44,23 @@ programa sem alteração de código.
 
 ---
 
-## Funcionalidades previstas
+## Funcionalidades
 
-| # | Funcionalidade | Descrição |
-|---|---|---|
-| 1 | Cadastrar ação | Código, escola, tema, data prevista, público-alvo, responsável e quantidade prevista de participantes |
-| 2 | Listar ações | Exibição tabular de todos os registros em memória |
-| 3 | Pesquisar ações | Busca por código, por escola ou por tema |
-| 4 | Atualizar situação | Alterna entre planejada, realizada e cancelada |
-| 5 | Registrar participantes | Quantidade efetiva informada quando a ação é marcada como realizada |
-| 6 | Gerar resumo geral | Contagem por situação, total de participantes e percentual de participação |
+| Opção | Funcionalidade | Requisito |
+| :-: | :-- | :-: |
+| 1 | Cadastrar ação: código, escola, tema, data prevista, público-alvo, responsável, participantes previstos e situação inicial | RF01 |
+| 2 | Listar todas as ações | RF02 |
+| 3 | Pesquisar por código, escola ou tema (aceita parte do nome) | RF03 |
+| 4 | Atualizar a situação (planejada, realizada ou cancelada) | RF04 |
+| — | Registrar os participantes efetivos quando a ação é marcada como realizada | RF05 |
+| 5 | Gerar resumo geral: ações por situação, total de participantes e percentual de participação | RF06 |
+| 0 | Sair | RF08 |
 
-Todas as operações validam as entradas: código duplicado ou não positivo, campos obrigatórios
-vazios, quantidades negativas, opções inexistentes no menu e limite de armazenamento atingido.
+**Validações (RF07):** código duplicado, zero ou negativo; letras em campos numéricos; campos
+vazios; textos maiores que o campo; quantidades negativas; opções inexistentes; registro
+inexistente; limite de 100 ações.
+
+Ao iniciar, o sistema carrega **4 ações fictícias** para demonstração (RF09).
 
 ---
 
@@ -76,15 +82,15 @@ Estes limites são **requisitos de projeto**, não recomendações:
 ```
 pse-em-acao/
 ├── README.md
-├── docs/
-│   ├── README.md             # o que há em cada subpasta
-│   ├── entrega-1/            # documento escrito da 1ª entrega (.pdf)
-│   └── fluxogramas/          # imagens (.png) e os fontes Graphviz (.dot)
-└── src/main.c                # esqueleto em C: menu, cadastro, auxiliares e resumo
+├── src/
+│   └── pse_em_acao.c         # código-fonte completo (2ª entrega)
+├── testes/
+│   └── registro-de-testes.md # 22 casos de teste, todos aprovados
+└── docs/
+    ├── README.md             # o que há em cada subpasta
+    ├── entrega-1/            # documento escrito da 1ª entrega (.pdf)
+    └── fluxogramas/          # imagens (.png) e os fontes Graphviz (.dot)
 ```
-
-As pastas da 2ª entrega (`docs/entrega-2/` e `testes/`) serão criadas quando houver
-conteúdo para elas.
 
 ---
 
@@ -123,18 +129,54 @@ compila e executa, encerrando com um commit de fechamento e a atualização da p
 
 ## Compilação e execução
 
+### Dev-C++ (Windows)
+
+1. Baixe o repositório (botão **Code > Download ZIP**) e extraia a pasta.
+2. No Dev-C++, abra `src/pse_em_acao.c` em **Arquivo > Abrir**.
+3. Clique em **Executar > Compilar & Executar** (ou F11).
+
+> Use o **Embarcadero Dev-C++** (versão atual). O Dev-C++ 4.9.9.2, de 2005, tem um compilador que
+> trava no Windows 10/11 e não gera o executável.
+
+### GCC (Windows ou Linux)
+
 ```bash
-gcc -Wall -std=c99 src/main.c -o pse
-./pse
-# compila sem avisos; listar, pesquisar e atualizar entram na 2ª entrega
+gcc -Wall -std=c99 src/pse_em_acao.c -o pse
+./pse          # Linux
+pse.exe        # Windows
 ```
 
-No Windows, com MinGW:
+O código usa apenas `stdio.h` e `string.h` e compila sem avisos com `gcc -Wall -Wextra -pedantic`.
 
-```bat
-gcc -Wall -std=c99 src\main.c -o pse.exe
-pse.exe
+### Exemplo: resumo geral com as ações fictícias
+
 ```
+----- RESUMO GERAL -----
+Acoes cadastradas: 4
+Planejadas: 1 | Realizadas: 2 | Canceladas: 1
+Participantes previstos (acoes realizadas): 180
+Participantes efetivos  (acoes realizadas): 151
+Percentual de participacao: 83.9%
+```
+
+---
+
+## Testes
+
+Foram executados **22 casos de teste**, cobrindo as seis funcionalidades e todas as validações,
+incluindo código duplicado, registro inexistente e o limite de 100 ações. Todos foram aprovados.
+O registro completo, com entradas e saídas, está em
+[`testes/registro-de-testes.md`](testes/registro-de-testes.md).
+
+---
+
+## Limitações e melhorias futuras
+
+- Os dados ficam só na memória e se perdem ao fechar o programa.
+- A data não é validada quanto ao formato DD/MM/AAAA.
+- A pesquisa por escola e tema diferencia maiúsculas de minúsculas.
+- Não há login nem controle de acesso por perfil.
+- Melhorias possíveis: gravar em arquivo, validar a data, editar e excluir ações, resumo por escola.
 
 ---
 
